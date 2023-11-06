@@ -1,5 +1,4 @@
-
-  roles:
+roles:
   - geerlingguy.nodejs
 collections:
   - community.general
