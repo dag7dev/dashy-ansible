@@ -8,7 +8,6 @@
       git:
         repo: https://github.com/Lissy93/dashy.git
         dest: /home/nephila/dashy  
-        update: yes
         
     - name: Install "yarn" node.js package globally.
       community.general.npm:
