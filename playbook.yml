@@ -1,7 +1,7 @@
 ---
 - name: Deploy Dashy App
   hosts: all
-  become: yes  
+  become: true
   roles:
     - geerlingguy.nodejs
   tasks:
