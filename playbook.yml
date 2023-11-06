@@ -1,0 +1,40 @@
+---
+- name: Deploy Dashy App
+  hosts: all
+  become: yes  
+
+  tasks:
+    - name: Clone Dashy repository
+      git:
+        repo: https://github.com/Lissy93/dashy.git
+        dest: /home/nephila/dashy  
+        update: yes
+        
+    - name: Install "yarn" node.js package globally.
+      community.general.npm:
+        name: yarn
+        global: true
+
+
+    - name: Change directory to Dashy
+      become_user: nephila  
+      command: cd /home/nephila/dashy
+      
+    - name: Install dependencies with yarn
+      become_user: nephila
+      command: yarn
+      args:
+        chdir: /home/nephila/dashy  
+      
+    - name: Build the app with yarn
+      become_user: nephila
+      command: yarn build
+      args:
+        chdir: /home/nephila/dashy
+      
+    - name: Start the app with yarn
+      become_user: nephila
+      command: yarn start
+      args:
+        chdir: /home/nephila/dashy
+      
