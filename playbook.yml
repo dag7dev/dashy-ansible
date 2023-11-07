@@ -4,27 +4,19 @@
   become: true
   roles:
     - geerlingguy.docker
-  tasks:
-    - name: Clone Dashy repository
-      git:
-        repo: https://github.com/Lissy93/dashy.git
-        dest: /home/nephila/dashy  
-
+  tasks:          
     - name: Build the app with docker
-      copy: 
-        src: conf.yml
-        dest: /home/nephila/conf.yml
-          
-      
-    - name: Build the app with docker
-      command: docker run -d -p 4000:80 -v /home/nephila/conf.yml:/app/public/conf.yml --name my-dashboard --restart=always lissy93/dashy:latest
-      args:
-        chdir: /home/nephila/dashy
+      command: docker run -d -p 80:80 -p 443:443 linuxserver/heimdall:latest
         
     - name: Open port in the firewall
       ufw:
         rule: allow
-        port: "8080"
+        port: "80"
+
+    - name: Open port in the firewall
+      ufw:
+        rule: allow
+        port: "443"
       
         
 #    - name: "Install forever (to run Node.js app)."
