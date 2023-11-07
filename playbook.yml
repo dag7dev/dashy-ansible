@@ -23,7 +23,12 @@
     - name: Build the app with yarn
       command: yarn build
       args:
-        chdir: /home/nephila/dashy
+        chdir: /home/nephila/dash
+        
+    - name: Open port in the firewall
+      ufw:
+        rule: allow
+        port: "4000"
       
    # - name: Start the app with yarn
     #  command: npm start
