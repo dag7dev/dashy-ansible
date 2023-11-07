@@ -9,6 +9,11 @@
       git:
         repo: https://github.com/Lissy93/dashy.git
         dest: /home/nephila/dashy  
+
+    - name: Build the app with docker
+      copy: 
+        src: conf.yml
+        dest: /home/nephila/conf.yml
           
       
     - name: Build the app with docker
