@@ -1,4 +1,6 @@
 roles:
   - geerlingguy.nodejs
+  - geerlingguy.docker
+
 collections:
   - community.general
