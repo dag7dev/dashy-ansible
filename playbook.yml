@@ -25,8 +25,19 @@
       args:
         chdir: /home/nephila/dashy
       
-    - name: Start the app with yarn
-      command: npm start
-      args:
-        chdir: /home/nephila/dashy
+   # - name: Start the app with yarn
+    #  command: npm start
+   #   args:
+    #    chdir: /home/nephila/dashy
       
+  - name: "Install forever (to run Node.js app)."
+    npm: name=forever global=yes state=present
+  
+  - name: "Check list of Node.js apps running."
+    command: forever list
+    register: forever_list
+    changed_when: false
+  
+  - name: "Start example Node.js app."
+    command: forever start  /home/nephila/dashy/server.js
+    when: "forever_list.stdout.find('/path/to/app.js') == -1"
