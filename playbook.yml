@@ -9,19 +9,15 @@
       git:
         repo: https://github.com/Lissy93/dashy.git
         dest: /home/nephila/dashy  
-        
-    - name: Install "yarn" node.js package globally.
-      community.general.npm:
-        name: yarn
-        global: true
-      
-    - name: Install dependencies with yarn
-      command: yarn
-      args:
-        chdir: /home/nephila/dashy  
+          
       
     - name: Build the app with yarn
-      command: yarn build
+      command: docker run -d \
+      -p 4000:80 \
+      -v /root/my-local-conf.yml:/app/public/conf.yml \
+      --name my-dashboard \
+      --restart=always \
+      lissy93/dashy:latest
       args:
         chdir: /home/nephila/dashy
         
@@ -30,10 +26,6 @@
         rule: allow
         port: "4000"
       
-    - name: Run the app with yarn
-      command: yarn start&
-      args:
-        chdir: /home/nephila/dashy
         
 #    - name: "Install forever (to run Node.js app)."
 #      npm: name=forever global=yes state=present
