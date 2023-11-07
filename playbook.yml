@@ -23,7 +23,7 @@
     - name: Build the app with yarn
       command: yarn build
       args:
-        chdir: /home/nephila/dash
+        chdir: /home/nephila/dashy
         
     - name: Open port in the firewall
       ufw:
