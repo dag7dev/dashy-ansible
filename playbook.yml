@@ -14,11 +14,6 @@
       community.general.npm:
         name: yarn
         global: true
-
-
-    - name: Change directory to Dashy
-      become_user: nephila  
-      command: cd /home/nephila/dashy
       
     - name: Install dependencies with yarn
       become_user: nephila
