@@ -26,7 +26,7 @@
         chdir: /home/nephila/dashy
       
     - name: Start the app with yarn
-      command: yarn start
+      command: npm start
       args:
         chdir: /home/nephila/dashy
       
