@@ -6,7 +6,7 @@
     - geerlingguy.docker
   tasks:          
     - name: Build the app with docker
-      command: docker run --restart always -d -p 80:80 -p 443:443 linuxserver/heimdall:latest
+      command: docker run -d -p 80:80 -p 443:443 linuxserver/heimdall:latest
       ignore_errors: true
 
 
