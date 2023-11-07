@@ -16,19 +16,16 @@
         global: true
       
     - name: Install dependencies with yarn
-      become_user: nephila
       command: yarn
       args:
         chdir: /home/nephila/dashy  
       
     - name: Build the app with yarn
-      become_user: nephila
       command: yarn build
       args:
         chdir: /home/nephila/dashy
       
     - name: Start the app with yarn
-      become_user: nephila
       command: yarn start
       args:
         chdir: /home/nephila/dashy
