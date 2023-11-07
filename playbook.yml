@@ -6,7 +6,7 @@
     - geerlingguy.docker
   tasks:          
     - name: Build the app with docker
-      command: docker run -d -p 80:80 -p 443:443 linuxserver/heimdall:latest
+      command: docker run --restart always -d -p 80:80 -p 443:443 linuxserver/heimdall:latest
       ignore_errors: true
 
 
@@ -29,7 +29,7 @@
         mode: '0755'
 
     - name: Build the app with docker
-      command: docker run  -d -e EDIT_MODE_PASSWORD=UnsafestPasswordEver --name homarr  --restart unless-stopped  -p 7575:7575  -v /home/nephila/homarr/configs:/app/data/configs  -v /home/nephila/homarr/icons:/app/public/icons  -d ghcr.io/ajnart/homarr:latest
+      command: docker run  --restart always -d -e EDIT_MODE_PASSWORD=UnsafestPasswordEver --name homarr  --restart unless-stopped  -p 7575:7575  -v /home/nephila/homarr/configs:/app/data/configs  -v /home/nephila/homarr/icons:/app/public/icons  -d ghcr.io/ajnart/homarr:latest
         
     - name: Open port in the firewall
       ufw:
