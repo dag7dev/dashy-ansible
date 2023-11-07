@@ -12,12 +12,7 @@
           
       
     - name: Build the app with yarn
-      command: docker run -d \
-      -p 4000:80 \
-      -v /root/my-local-conf.yml:/app/public/conf.yml \
-      --name my-dashboard \
-      --restart=always \
-      lissy93/dashy:latest
+      command: docker run -d -p 4000:80 -v /root/my-local-conf.yml:/app/public/conf.yml --name my-dashboard --restart=always lissy93/dashy:latest
       args:
         chdir: /home/nephila/dashy
         
